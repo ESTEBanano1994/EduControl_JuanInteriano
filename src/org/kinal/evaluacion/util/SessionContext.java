@@ -1,84 +1,47 @@
 
 package org.kinal.evaluacion.util;
 
-import java.time.LocalDateTime;
+import org.kinal.evaluacion.model.Usuario;
 
 public final class SessionContext {
 
-    private static final SessionContext INSTANCIA = new SessionContext();
-
-    private Integer idUsuario;
-    private String username;
-    private String nombreCompleto;
-    private String rol;
-    private LocalDateTime horaInicioSesion;
+    private static Usuario usuarioActivo;
 
     private SessionContext() {
     }
 
-    public static SessionContext getInstancia() {
-        return INSTANCIA;
-    }
-
-    public synchronized void iniciarSesion(
-            int idUsuario,
-            String username,
-            String nombreCompleto,
-            String rol) {
-
-        if (idUsuario <= 0
-                || username == null || username.isBlank()
-                || nombreCompleto == null || nombreCompleto.isBlank()
-                || rol == null || rol.isBlank()) {
+    public static void iniciarSesion(Usuario usuario) {
+        if (usuario == null) {
             throw new IllegalArgumentException(
-                    "Los datos del usuario no son validos"
-            );
+                    "El usuario no puede ser null");
         }
 
-        if (!rol.equals("COORDINADOR_ACADEMICO")
-                && !rol.equals("ESTUDIANTE")
-                && !rol.equals("SECRETARIA")) {
-            throw new IllegalArgumentException(
-                    "El rol del usuario no es valido"
-            );
-        }
+        // No conservamos el hash en la sesion.
+        Usuario sesion = new Usuario();
 
-        this.idUsuario = idUsuario;
-        this.username = username;
-        this.nombreCompleto = nombreCompleto;
-        this.rol = rol;
-        this.horaInicioSesion = LocalDateTime.now();
+        sesion.setIdUsuario(usuario.getIdUsuario());
+        sesion.setNombreCompleto(usuario.getNombreCompleto());
+        sesion.setUsername(usuario.getUsername());
+        sesion.setRol(usuario.getRol());
+        sesion.setActivo(usuario.isActivo());
+
+        usuarioActivo = sesion;
     }
 
-    public synchronized boolean sesionActiva() {
-        return idUsuario != null;
+    public static Usuario getUsuarioActivo() {
+        return usuarioActivo;
     }
 
-    public synchronized Integer getIdUsuario() {
-        return idUsuario;
+    public static boolean sesionActiva() {
+        return usuarioActivo != null;
     }
 
-    public synchronized String getUsername() {
-        return username;
+    public static boolean tieneRol(String rol) {
+        return usuarioActivo != null
+                && usuarioActivo.getRol().equals(rol);
     }
 
-    public synchronized String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public synchronized String getRol() {
-        return rol;
-    }
-
-    public synchronized LocalDateTime getHoraInicioSesion() {
-        return horaInicioSesion;
-    }
-
-    public synchronized void cerrarSesion() {
-        idUsuario = null;
-        username = null;
-        nombreCompleto = null;
-        rol = null;
-        horaInicioSesion = null;
+    public static void cerrarSesion() {
+        usuarioActivo = null;
     }
 }

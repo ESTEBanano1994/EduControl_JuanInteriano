@@ -1,0 +1,59 @@
+
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.kinal.evaluacion.controller.MenuController"
+      alignment="CENTER"
+      spacing="15"
+      prefWidth="450"
+      prefHeight="430"
+      style="-fx-background-color: #F2F2F2;">
+
+    <padding>
+        <Insets top="25" right="40"
+                bottom="25" left="40"/>
+    </padding>
+
+    <Label text="EduControl"
+           style="-fx-text-fill: #28558A;">
+        <font>
+            <Font size="26"/>
+        </font>
+    </Label>
+
+    <Label fx:id="lblTitulo"
+           text="Menú principal"
+           style="-fx-font-size: 18px;"/>
+
+    <Label fx:id="lblUsuario"
+           text="Usuario"/>
+
+    <Button fx:id="btnOpcion1"
+            text="Opción 1"
+            prefWidth="250"
+            onAction="#handleOpcion1"/>
+
+    <Button fx:id="btnOpcion2"
+            text="Opción 2"
+            prefWidth="250"
+            onAction="#handleOpcion2"/>
+
+    <Button fx:id="btnOpcion3"
+            text="Opción 3"
+            prefWidth="250"
+            onAction="#handleOpcion3"/>
+
+    <Button text="Cerrar sesión"
+            prefWidth="250"
+            onAction="#handleCerrarSesion"
+            style="-fx-background-color: #3567A6;
+                   -fx-text-fill: white;"/>
+
+</VBox>
+
