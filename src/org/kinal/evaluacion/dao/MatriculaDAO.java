@@ -19,9 +19,9 @@ public interface MatriculaDAO {
     Matricula buscarPorId(int idMatricula)
             throws DaoException;
 
-    void prematricularSeccion(int idMatricula, int idSeccion)
+    void prematricularSeccion(int idEstudiante, int idSeccion)
             throws DaoException;
 
-    void retirarSeccion(int idMatricula, int idSeccion)
+    void retirarSeccion(int idDetalle)
             throws DaoException;
 }
