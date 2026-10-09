@@ -1,5 +1,8 @@
+
 package org.kinal.evaluacion.dao;
 
-public interface EstudianteDAO {
+import org.kinal.evaluacion.model.Estudiante;
 
+public interface EstudianteDAO
+        extends CrudDAO<Estudiante, Integer> {
 }
