@@ -1,65 +1,42 @@
 
 package org.kinal.evaluacion.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Estudiante {
+public class Docente {
 
-    private int idEstudiante;
-    private Integer idUsuario;
-    private String carnet;
+    private int idDocente;
     private String nombres;
     private String apellidos;
-    private LocalDate fechaNacimiento;
     private String correo;
     private String telefono;
+    private String especialidad;
     private String estado;
     private LocalDateTime fechaRegistro;
 
-    public Estudiante() {
+    public Docente() {
     }
 
-    public Estudiante(int idEstudiante, Integer idUsuario,
-            String carnet, String nombres, String apellidos,
-            LocalDate fechaNacimiento, String correo,
-            String telefono, String estado,
+    public Docente(int idDocente, String nombres,
+            String apellidos, String correo, String telefono,
+            String especialidad, String estado,
             LocalDateTime fechaRegistro) {
-
-        this.idEstudiante = idEstudiante;
-        this.idUsuario = idUsuario;
-        this.carnet = carnet;
+        this.idDocente = idDocente;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
         this.correo = correo;
         this.telefono = telefono;
+        this.especialidad = especialidad;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
     }
 
-    public int getIdEstudiante() {
-        return idEstudiante;
+    public int getIdDocente() {
+        return idDocente;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
-        this.idEstudiante = idEstudiante;
-    }
-
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getCarnet() {
-        return carnet;
-    }
-
-    public void setCarnet(String carnet) {
-        this.carnet = carnet;
+    public void setIdDocente(int idDocente) {
+        this.idDocente = idDocente;
     }
 
     public String getNombres() {
@@ -78,14 +55,6 @@ public class Estudiante {
         this.apellidos = apellidos;
     }
 
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -100,6 +69,14 @@ public class Estudiante {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     public String getEstado() {
@@ -120,13 +97,13 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "idEstudiante=" + idEstudiante +
-                ", carnet='" + carnet + '\'' +
+        return "Docente{" +
+                "idDocente=" + idDocente +
                 ", nombres='" + nombres + '\'' +
                 ", apellidos='" + apellidos + '\'' +
-                ", correo='" + correo + '\'' +
+                ", especialidad='" + especialidad + '\'' +
                 ", estado='" + estado + '\'' +
                 '}';
     }
 }
+
