@@ -1,3 +1,6 @@
+USE educontrol;
+SELECT * FROM estudiante;
+
 CREATE DATABASE IF NOT EXISTS educontrol
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
@@ -101,8 +104,6 @@ CREATE TABLE prerrequisito (
     CONSTRAINT uk_curso_prerrequisito
         UNIQUE (id_curso, id_curso_prerrequisito),
 
-    CONSTRAINT chk_curso_no_sea_su_prerrequisito
-        CHECK (id_curso <> id_curso_prerrequisito),
 
     INDEX idx_prerrequisito_curso (id_curso),
     INDEX idx_prerrequisito_requerido (id_curso_prerrequisito)

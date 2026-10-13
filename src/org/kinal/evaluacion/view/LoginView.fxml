@@ -1,0 +1,57 @@
+
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.kinal.evaluacion.controller.LoginController"
+      alignment="CENTER"
+      spacing="12"
+      prefWidth="420"
+      prefHeight="350"
+      style="-fx-background-color: #F2F2F2;">
+
+    <padding>
+        <Insets top="25" right="60"
+                bottom="25" left="60"/>
+    </padding>
+
+    <Label text="EduControl"
+           style="-fx-text-fill: #28558A;">
+        <font>
+            <Font size="26"/>
+        </font>
+    </Label>
+
+    <Label text="Sistema de Matriculación"/>
+
+    <Label text="Iniciar sesión"
+           style="-fx-font-size: 16px;"/>
+
+    <Label text="Usuario"/>
+
+    <TextField fx:id="txtUsuario"
+               promptText="Ingrese su usuario"
+               prefWidth="250"/>
+
+    <Label text="Contraseña"/>
+
+    <PasswordField fx:id="txtPassword"
+                   promptText="Ingrese su contraseña"
+                   prefWidth="250"/>
+
+    <Button text="Ingresar"
+            onAction="#handleIngresar"
+            prefWidth="150"
+            style="-fx-background-color: #3567A6;
+                   -fx-text-fill: white;"/>
+
+    <Label fx:id="lblMensaje"
+           text=""
+           wrapText="true"
+           style="-fx-text-fill: red;"/>
+
+</VBox>

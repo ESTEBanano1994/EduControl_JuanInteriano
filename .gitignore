@@ -1,0 +1,25 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# NetBeans
+/build/
+/dist/
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+
+# Archivos temporales
+*.log
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# Configuración local
+.env
+.env.*
