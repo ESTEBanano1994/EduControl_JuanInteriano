@@ -167,6 +167,24 @@ public class EstudianteDAOImpl implements EstudianteDAO {
 
         return null;
     }
+    
+    
+    @Override
+    public Estudiante buscarPorIdUsuario(int idUsuario)
+            throws DaoException {
+
+        for (Estudiante estudiante : listar()) {
+
+            if (estudiante.getIdUsuario() != null
+                && estudiante.getIdUsuario() == idUsuario) {
+
+             return estudiante;
+            }
+        }
+
+        return null;
+    }
+
 
     private Estudiante mapearEstudiante(ResultSet rs)
             throws SQLException {

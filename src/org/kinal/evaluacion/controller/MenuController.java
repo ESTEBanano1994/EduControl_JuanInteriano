@@ -11,6 +11,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.kinal.evaluacion.dao.EstudianteDAO;
+import org.kinal.evaluacion.dao.impl.EstudianteDAOImpl;
+import org.kinal.evaluacion.exceptions.DaoException;
+import org.kinal.evaluacion.model.Estudiante;
+import java.io.IOException;
+import javafx.stage.Stage;
+
 
 import org.kinal.evaluacion.model.Usuario;
 import org.kinal.evaluacion.util.SessionContext;
@@ -113,10 +120,68 @@ private void handleOpcion1() {
     }
 
 
-    @FXML
-    private void handleOpcion2() {
+ 
+@FXML
+private void handleOpcion2() {
+
+    if (!SessionContext.tieneRol("ESTUDIANTE")) {
         ejecutarOpcion(2);
+        return;
     }
+
+    try {
+
+        int idUsuario = SessionContext
+                .getUsuarioActivo()
+                .getIdUsuario();
+
+        EstudianteDAO estudianteDAO =
+                new EstudianteDAOImpl();
+
+        Estudiante estudiante =
+                estudianteDAO.buscarPorIdUsuario(idUsuario);
+
+        if (estudiante == null) {
+
+            mostrarMensaje(
+                    "No se encontró un estudiante "
+                    + "asociado a este usuario.");
+
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/kinal/evaluacion/view/PrematriculaView.fxml"));
+
+        Parent root = loader.load();
+
+        PrematriculaController controller =
+                loader.getController();
+
+        controller.establecerIdEstudiante(
+                estudiante.getIdEstudiante());
+
+        Stage stage = (Stage)
+                lblTitulo.getScene().getWindow();
+
+        stage.setScene(new Scene(root));
+
+        stage.setTitle(
+                "EduControl - Prematrícula");
+
+        stage.centerOnScreen();
+
+    } catch (DaoException | IOException e) {
+
+        mostrarMensaje(
+                "No se pudo abrir la prematrícula: "
+                + e.getMessage());
+
+        e.printStackTrace();
+    }
+}
+
 
     @FXML
     private void handleOpcion3() {
