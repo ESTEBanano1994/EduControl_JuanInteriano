@@ -82,10 +82,36 @@ public class MenuController {
         }
     }
 
-    @FXML
-    private void handleOpcion1() {
+  
+@FXML
+private void handleOpcion1() {
+
+    if (SessionContext.tieneRol(
+            "COORDINADOR_ACADEMICO")) {
+
+        try {
+            Parent root = FXMLLoader.load(
+                    getClass().getResource(
+                        "/org/kinal/evaluacion/view/CursoView.fxml"));
+
+            Stage stage = (Stage)
+                    lblTitulo.getScene().getWindow();
+
+            stage.setScene(new Scene(root));
+            stage.setTitle("EduControl - Gestión de Cursos");
+            stage.centerOnScreen();
+
+        } catch (IOException e) {
+            mostrarMensaje(
+                    "No se pudo abrir Gestión de Cursos.");
+            e.printStackTrace();
+        }
+
+    } else {
         ejecutarOpcion(1);
     }
+    }
+
 
     @FXML
     private void handleOpcion2() {

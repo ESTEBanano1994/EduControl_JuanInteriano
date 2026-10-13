@@ -1,0 +1,156 @@
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.kinal.evaluacion.controller.CursoController"
+            prefWidth="850"
+            prefHeight="620"
+            style="-fx-background-color: #F2F2F2;">
+
+    <top>
+        <VBox alignment="CENTER" spacing="5"
+              style="-fx-background-color: #DCE8F5;">
+            <padding>
+                <Insets top="15" right="15"
+                        bottom="15" left="15"/>
+            </padding>
+
+            <Label text="EduControl"
+                   style="-fx-font-size: 24px;
+                          -fx-text-fill: #28558A;"/>
+
+            <Label text="Gestión de Cursos"
+                   style="-fx-font-size: 17px;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="12">
+            <padding>
+                <Insets top="20" right="25"
+                        bottom="15" left="25"/>
+            </padding>
+
+            <GridPane hgap="12" vgap="10">
+
+                <Label text="Código:"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtCodigo"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Nombre:"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtNombre"
+                           GridPane.rowIndex="1"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Descripción:"
+                       GridPane.rowIndex="2"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtDescripcion"
+                           GridPane.rowIndex="2"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Créditos:"
+                       GridPane.rowIndex="3"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtCreditos"
+                           GridPane.rowIndex="3"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Horas semanales:"
+                       GridPane.rowIndex="4"
+                       GridPane.columnIndex="0"/>
+
+                <TextField fx:id="txtHoras"
+                           GridPane.rowIndex="4"
+                           GridPane.columnIndex="1"/>
+
+                <Label text="Estado:"
+                       GridPane.rowIndex="5"
+                       GridPane.columnIndex="0"/>
+
+                <ComboBox fx:id="cmbEstado"
+                          prefWidth="180"
+                          GridPane.rowIndex="5"
+                          GridPane.columnIndex="1"/>
+
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="10">
+
+                <Button text="Agregar"
+                        onAction="#handleAgregar"/>
+
+                <Button text="Actualizar"
+                        onAction="#handleActualizar"/>
+
+                <Button text="Eliminar"
+                        onAction="#handleEliminar"/>
+
+                <Button text="Limpiar"
+                        onAction="#handleLimpiar"/>
+
+            </HBox>
+
+            <Label text="Lista de cursos"
+                   style="-fx-font-size: 16px;"/>
+
+            <TableView fx:id="tablaCursos"
+                       prefHeight="230"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="colCodigo"
+                                 text="Código"
+                                 prefWidth="110"/>
+
+                    <TableColumn fx:id="colNombre"
+                                 text="Nombre"
+                                 prefWidth="230"/>
+
+                    <TableColumn fx:id="colCreditos"
+                                 text="Créditos"
+                                 prefWidth="100"/>
+
+                    <TableColumn fx:id="colHoras"
+                                 text="Horas"
+                                 prefWidth="90"/>
+
+                    <TableColumn fx:id="colEstado"
+                                 text="Estado"
+                                 prefWidth="120"/>
+                </columns>
+
+            </TableView>
+
+            <Label fx:id="lblMensaje"
+                   text=""
+                   wrapText="true"/>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="10" right="10"
+                        bottom="15" left="10"/>
+            </padding>
+
+            <Button text="Regresar al menú"
+                    onAction="#handleRegresar"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
